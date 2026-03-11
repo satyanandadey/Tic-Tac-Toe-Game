@@ -68,3 +68,11 @@ body{
 .hide{
     display: none;
 }
+
+.x{
+    color: yellow;
+}
+
+.o{
+    color: #970064;
+}

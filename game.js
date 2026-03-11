@@ -5,7 +5,7 @@ let msg = document.querySelector("#msg");
 let newgame = document.querySelector("#newgame");
 
 let turnO=true;//playerX , playerO
-
+let count=0;
 const WinPatterns = [
     [0,1,2],
     [0,3,6],
@@ -19,6 +19,7 @@ const WinPatterns = [
 
 const resetGame=()=>{
     turnO=true;
+    count           =0;
     enabled_box();
     msgContainer.classList.add("hide");
 }; 
@@ -27,18 +28,30 @@ const resetGame=()=>{
     box.addEventListener("click",()=>{
         if(turnO){ // playerO
             box.innerText="O";
+            box.classList.add("o");
             turnO=false;
         }
         else{ // playerX
             box.innerText="X";
+            box.classList.add("x");
             turnO=true;
         }
         box.disabled=true;
+        count++;
 
-        check_Winner();
-    })
- })
+        let isWinner = check_Winner();
+        if(count===9 && !isWinner){
+            gameDraw();
+        }
+    });
+ });
 
+
+const gameDraw=()=>{
+    msg.innerText="Game was Draw";
+    msgContainer.classList.remove("hide");
+    disabled_box();
+};
 
 
 const disabled_box=()=>{
@@ -51,6 +64,7 @@ const enabled_box=()=>{
     for(let box of boxes){
         box.disabled=false;
         box.innerText="";
+        box.classList.remove("x", "o");
     }
 };
 
@@ -67,8 +81,8 @@ const check_Winner=()=>{
         let pos3Value=boxes[pattern[2]].innerText;
         if(pos1Value!="" && pos2Value!="" && pos3Value!=""){
             if(pos1Value===pos2Value && pos2Value===pos3Value){
-                console.log("Winner",pos1Value);
                 showWinner(pos1Value);
+                return true;
             }
         }        
     }
