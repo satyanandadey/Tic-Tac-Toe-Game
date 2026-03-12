@@ -98,7 +98,8 @@ body{
 @media (max-width: 600px) {
 
     .container {
-        margin-top: 10vh; 
+        margin-top: 10vh;
+        margin-bottom: -20vh; 
     }
 
     h1 {
