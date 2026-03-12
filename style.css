@@ -85,3 +85,11 @@ body{
     bottom:2px;
     right:20px;
 }
+
+.win-box {
+    background-color: #1B263B; /* Changes the winning boxes to your dark blue color */
+    color: white;              /* Makes the X or O white so it pops */
+    transform: scale(1.05);    /* Makes the winning boxes pop out slightly */
+    box-shadow: 0 0 1.5rem rgba(27, 38, 59, 0.8); /* Adds a glowing effect */
+    transition: all 0.3s ease; /* Makes the pop-out effect smooth */
+}

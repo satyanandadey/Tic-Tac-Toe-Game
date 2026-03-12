@@ -64,13 +64,17 @@ const enabled_box=()=>{
     for(let box of boxes){
         box.disabled=false;
         box.innerText="";
-        box.classList.remove("x", "o");
+        box.classList.remove("x", "o","win-box");
     }
 };
 
-const showWinner=(winner)=>{
+const showWinner=(winner,pattern)=>{
     msg.innerText=`Congradulations , Winner is ${winner}`;
     msgContainer.classList.remove("hide");
+
+    boxes[pattern[0]].classList.add("win-box");
+    boxes[pattern[1]].classList.add("win-box");
+    boxes[pattern[2]].classList.add("win-box");
     disabled_box();
 };
 
@@ -81,7 +85,7 @@ const check_Winner=()=>{
         let pos3Value=boxes[pattern[2]].innerText;
         if(pos1Value!="" && pos2Value!="" && pos3Value!=""){
             if(pos1Value===pos2Value && pos2Value===pos3Value){
-                showWinner(pos1Value);
+                showWinner(pos1Value , pattern);
                 return true;
             }
         }        
