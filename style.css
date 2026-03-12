@@ -76,3 +76,12 @@ body{
 .o{
     color: #970064;
 }
+
+.signature {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    color: #1B263B;
+    font-size: 1.5rem; 
+    position: fixed;
+    bottom:2px;
+    right:20px;
+}
